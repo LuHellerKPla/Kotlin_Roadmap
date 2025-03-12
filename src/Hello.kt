@@ -11,6 +11,6 @@ fun randomDay() : String {
     return week[Random().nextInt(week.size)]
 }
 
-fun main(args: Array<String>) {
+fun main() {
     feedTheFish()
 }

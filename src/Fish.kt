@@ -1,14 +1,20 @@
 import java.util.*
 
+// Compact Functions - each will perform a single, simple check
+fun isTooHot(temperature: Int) = temperature > 30
+fun isDirty(dirty: Int) = dirty > 30
+fun isSunday(day: String) = day == "Sunday"
+// --
+
 fun swim(speed: String = "fast") {
     println("Swimming $speed")
 }
 
 fun shouldChangeWater(day: String, temperature: Int = 22, dirty: Int = 20): Boolean {
     return when {
-        day == "Sunday" -> true
-        temperature > 30 -> true
-        dirty > 30 -> true
+        isTooHot(temperature) -> true
+        isDirty(dirty) -> true
+        isSunday(day) -> true
         else -> false
     }
 }
@@ -40,6 +46,7 @@ fun randomDay(): String {
 
 fun main() {
     feedTheFish()
+
     swim() // default value
     swim("slow") // positional argument
     swim(speed = "turle-like") // named parameter

@@ -1,25 +1,31 @@
-fun disneyMovie (day: String) : String {
-    var movie = ""
-    when (day) {
-        "Monday" -> movie = "The Lion King"
-        "Tuesday" -> movie = "Lilo and Stitch"
-        "Wednesday" -> movie = "Toy Story"
-        "Thursday" -> movie = "Hercules"
-        "Friday" -> movie = "Encanto"
-        "Saturday" -> movie = "The Emperor's New Groove"
-        "Sunday" -> movie = "Tarzan"
-        else -> movie = "None"
-    }
-    return movie
+import java.util.*
+
+fun pickRandomDay() : String {
+    val week = arrayOf("Monday", "Tuesday", "Wednesday", "Thursday",
+        "Friday", "Saturday", "Sunday")
+    return week[Random().nextInt(week.size)]
 }
 
-fun chooseMovie(){
-    val day = randomDay()
+fun disneyMovie(day: String): String {
+    return when (day) {
+        "Monday" -> "The Lion King"
+        "Tuesday" -> "Lilo and Stitch"
+        "Wednesday" -> "Toy Story"
+        "Thursday" -> "Hercules"
+        "Friday" -> "Encanto"
+        "Saturday" -> "The Emperor's New Groove"
+        "Sunday" -> "Tarzan"
+        else -> "None"
+    }
+}
+
+fun chooseMovie() {
+    val day = pickRandomDay()
     val movie = disneyMovie(day)
 
     println("Today is $day and I will watch $movie")
 }
 
-fun main (){
+fun main() {
     chooseMovie()
 }

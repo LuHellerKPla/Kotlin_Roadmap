@@ -8,7 +8,7 @@ interface FishColor {
     val color: String
 }
 
-object GoldColor: FishColor {
+object GoldColor : FishColor {
     override val color = "gold"
 }
 
@@ -16,16 +16,21 @@ object GoldColor: FishColor {
 //    abstract val color: String
 //}
 
-class Shark: FishAction, FishColor {
+class Shark : FishAction, FishColor {
     override val color = "gray"
     override fun eat() {
         println("Hunt and eat fish")
     }
 }
 
-class GoldFish(fishColor: FishColor = GoldColor): FishAction, FishColor by fishColor {
-//    override val color = "gold"
+class GoldFish(fishColor: FishColor = GoldColor) :
+    FishAction by PrintingFishAction("Eat algae"),
+    FishColor by fishColor {
+
+}
+
+class PrintingFishAction(val food: String) : FishAction {
     override fun eat() {
-        println("Eat algae")
+        println(food)
     }
 }

@@ -1,15 +1,16 @@
 package example.myapp
 
 class Aquarium (var length: Int = 100, var height: Int = 40, var width: Int = 20) {
-
+    var volume: Int
+        get() = width * height * length / 1000
+        set(value) { // value is the conventional name of the parameter
+            height = (value * 1000) / (width * length)
+        }
 
     init {
         println("Aquarium initializing")
     }
-    init {
-        // 1 liter = 1000 cm^3
-        println("Volume: ${width * length * height / 1000}L ")
-    }
+
 
     constructor(numberOfFish: Int): this() {
         // 2000 cmˆ3 per fish + extra room so water doesn't spill
@@ -25,5 +26,8 @@ class Aquarium (var length: Int = 100, var height: Int = 40, var width: Int = 20
                     "Length: $length cm " +
                     "Height: $height cm "
         )
+
+        // 1L = 1000 cmˆ3
+        println("Volume: $volume L")
     }
 }

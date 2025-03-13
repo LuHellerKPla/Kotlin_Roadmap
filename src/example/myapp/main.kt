@@ -16,9 +16,14 @@ fun buildAquarium() {
 
     // volume will print twice, once by the init block in the primary constructor before the second is executed, and once by the code in buildAquarium()
     println("-----")
+    val aquarium5 = Aquarium(numberOfFish = 29)
+    aquarium5.printSize()
+
     val aquarium6 = Aquarium(numberOfFish = 29)
+    println("-----")
     aquarium6.printSize()
-    println("Volume: ${aquarium6.width * aquarium6.length * aquarium6.height / 1000}L")
+    aquarium6.volume = 70
+    aquarium6.printSize()
 }
 
 fun main(){

@@ -24,6 +24,17 @@ fun buildAquarium() {
     aquarium6.printSize()
     aquarium6.volume = 70
     aquarium6.printSize()
+
+    println("-----")
+    val aquarium7 = Aquarium(length = 25, width = 25, height = 40)
+    println("Aquarium 7")
+    aquarium7.printSize()
+    println("-----")
+
+    println("-----")
+    val myTower = TowerTank(diameter = 25, height = 40)
+    myTower.printSize()
+    println("-----")
 }
 
 fun main(){

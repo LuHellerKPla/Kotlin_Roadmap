@@ -18,9 +18,16 @@ fun genericsExample(){
 //        println("waterSupply is null")
 //    }
 
-    val aquarium4 = Aquarium(LakeWater())
-    aquarium4.waterSupply.filter()
-    aquarium4.addWater()
+//    val aquarium4 = Aquarium(LakeWater())
+//    aquarium4.waterSupply.filter()
+//    aquarium4.addWater()
+
+    val aquarium5 = Aquarium(TapWater())
+    addItemTo(aquarium5)
+
+    val cleaner = TapWaterCleaner()
+    val aquarium6 = Aquarium(TapWater())
+    aquarium6.addWater(cleaner)
 
 }
 
@@ -42,10 +49,21 @@ class LakeWater : WaterSupply (true) {
 
 //class Aquarium<T>(val waterSupply: T) // Equivalent to: class Aquarium<T: Any?>(val waterSupply: T)
 
-class Aquarium<T: WaterSupply>(val waterSupply: T){
-    fun addWater(){
-        check(!waterSupply.needsProcessing) {"water supply needs processing first"}
-        println("Adding water from $waterSupply")
+class Aquarium<out T: WaterSupply>(val waterSupply: T){
+    fun addWater(cleaner: Cleaner<T>){
+        if(waterSupply.needsProcessing){
+            cleaner.clean(waterSupply)
+        }
+        println("Water added")
     }
 }
 
+fun addItemTo( aquarium: Aquarium<WaterSupply>) = println("item added")
+
+interface Cleaner<in T: WaterSupply> {
+    fun clean(waterSupply: T)
+}
+
+class TapWaterCleaner : Cleaner<TapWater> {
+    override fun clean(waterSupply: TapWater) = waterSupply.addChemicalCleaners()
+}

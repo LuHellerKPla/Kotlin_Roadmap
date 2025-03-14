@@ -17,6 +17,11 @@ fun genericsExample(){
 //    if(aquarium3.waterSupply == null) {
 //        println("waterSupply is null")
 //    }
+
+    val aquarium4 = Aquarium(LakeWater())
+    aquarium4.waterSupply.filter()
+    aquarium4.addWater()
+
 }
 
 open class WaterSupply(var needsProcessing: Boolean)
@@ -37,5 +42,10 @@ class LakeWater : WaterSupply (true) {
 
 //class Aquarium<T>(val waterSupply: T) // Equivalent to: class Aquarium<T: Any?>(val waterSupply: T)
 
-class Aquarium<T: WaterSupply>(val waterSupply: T)
+class Aquarium<T: WaterSupply>(val waterSupply: T){
+    fun addWater(){
+        check(!waterSupply.needsProcessing) {"water supply needs processing first"}
+        println("Adding water from $waterSupply")
+    }
+}
 

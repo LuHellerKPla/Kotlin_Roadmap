@@ -1,5 +1,16 @@
 package generics
 
+fun main(){
+    genericsExample()
+}
+
+fun genericsExample(){
+    val aquarium = Aquarium(TapWater())
+    println("Water needs processing: ${aquarium.waterSupply.needsProcessing}")
+    aquarium.waterSupply.addChemicalCleaners()
+    println("Water needs processing: ${aquarium.waterSupply.needsProcessing}")
+}
+
 open class WaterSupply(var needsProcessing: Boolean)
 
 class TapWater : WaterSupply(true) {
@@ -15,3 +26,7 @@ class LakeWater : WaterSupply (true) {
         needsProcessing = false
     }
 }
+
+class Aquarium<T>(val waterSupply: T)
+
+

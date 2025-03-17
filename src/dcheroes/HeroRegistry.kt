@@ -1,21 +1,15 @@
 package dcheroes
 
 fun main() {
-    //String templates
-    val hero = "Batman"
-    val city = "Gotham"
-    println("$hero protects $city")
-    println("${ hero.length} letters in $hero")
+    //Arithmetic Operations
+    val batarangs = 10
+    val newBatarangs = 5
+    val totalBatarangs = batarangs + newBatarangs
+    println("Batman has $totalBatarangs batarangs")
 
-    //Raw Strings (Triple Quotes)
-    val heroProfile = """
-        Hero Name: Batman
-        Secret Identity: Bruce Wayne
-        Base: Gotham City
-        Abilities:
-            - Master Detective
-            - Peak Human Condition
-            - Expert Fighter
-    """.trimIndent()
-    println(heroProfile)
+    //Power level calculations
+    val baseStrength = 85
+    val equipmentBonus = 15
+    val totalPower = baseStrength + equipmentBonus
+    println("Total power level: $totalPower")
 }

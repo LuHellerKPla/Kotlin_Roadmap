@@ -1,41 +1,68 @@
 package dcheroes
 
-//Create a hero profile system
-
-fun createHeroProfile(
-    name: String,
-    secretIdentity: String?,
-    powerLevel: Int,
-    isMetahuman: Boolean
-) {
-    println(
-        """
-            Hero Profile:
-                Name: $name
-                Secret identity: ${secretIdentity ?: "CLASSIFIED"}
-                Power level: $powerLevel
-                Metahuman: $isMetahuman
-                
-            """.trimIndent()
-    )
+//Simple Function Declaration
+fun assembleJusticeLeague() {
+    println("Justice League assembled!")
 }
 
-fun analyzeHero(hero: Any) {
-    when(hero) {
-        is String -> println("Hero name: $hero")
-        is Int -> println("Hero power level: $hero")
-        else -> println("Unknown hero data")
-    }
+fun getHeroName(): String {
+    return "Batman"
+}
+
+//Functions with Parameters
+fun announceHero(name: String, city: String) {
+    println("$name is protecting $city")
+}
+
+//Functions with Default Values
+fun heroAlert(
+    hero: String,
+    threat: String = "crime",
+    urgency: Int = 1,
+    location: String = "Gotham"
+) {
+    println("Alert: $hero is fighting $threat in $location! Urgency level: $urgency")
+}
+
+// Using Named Parameters
+fun deployHero(
+    heroName: String,
+    location: String,
+    teamSupport: Boolean = false,
+    equipmentNeeded: Boolean = true
+) {
+    println("------")
+    println("Deploying $heroName to $location")
+    if(teamSupport) println("Backup team requested")
+    if(equipmentNeeded) println("Equipment preparation required")
+}
+
+// Single-Expression Functions
+// Compact functions declaration
+fun isSuperman(hero: String): Boolean = hero.equals("Superman", ignoreCase = true)
+fun calculateThreatLevel(villainPower: Int, minions: Int) = villainPower * minions
+
+// Functions that don't return values
+fun activateBatSignal(): Unit {
+    println("Bat-Signal activated!")
+}
+// Unit return type can be omitted
+fun deactivateBatSignal(){
+    println("Bat-Signal deactivated")
 }
 
 fun main() {
-    // Create various hero profiles
-    createHeroProfile("Batman", "Bruce Wayne", 90, false)
-    createHeroProfile("Superman", "Clark Kent", 100, true)
-    createHeroProfile("Wonder Woman", "Diana Prince", 95, true)
-    createHeroProfile("The Flash", null, 85, true)
+    announceHero("Batman", "Gotham")
+    announceHero("Superman", "Metropolis")
 
-    analyzeHero("Batman")
-    analyzeHero(95)
-    analyzeHero(true)
+    heroAlert("Batman")
+    heroAlert("Superman", "Brainiac")
+    heroAlert("Wonder Woman", "Cheetah", 5, "Themyscira")
+
+    deployHero(
+        heroName = "Batman",
+        location = "Crime Alley",
+        equipmentNeeded = true,
+        teamSupport = false
+    )
 }

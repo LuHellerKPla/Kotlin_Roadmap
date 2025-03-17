@@ -1,15 +1,30 @@
 package dcheroes
 
-fun main() {
-    //Arithmetic Operations
-    val batarangs = 10
-    val newBatarangs = 5
-    val totalBatarangs = batarangs + newBatarangs
-    println("Batman has $totalBatarangs batarangs")
+//Create a hero profile system
 
-    //Power level calculations
-    val baseStrength = 85
-    val equipmentBonus = 15
-    val totalPower = baseStrength + equipmentBonus
-    println("Total power level: $totalPower")
+fun createHeroProfile(
+    name: String,
+    secretIdentity: String?,
+    powerLevel: Int,
+    isMetahuman: Boolean
+) {
+    println(
+        """
+            Hero Profile:
+                Name: $name
+                Secret identity: ${secretIdentity ?: "CLASSIFIED"}
+                Power level: $powerLevel
+                Metahuman: $isMetahuman
+                
+            """.trimIndent()
+    )
+}
+
+fun main() {
+    // Create various hero profiles
+    createHeroProfile("Batman", "Bruce Wayne", 90, false)
+    createHeroProfile("Superman", "Clark Kent", 100, true)
+    createHeroProfile("Wonder Woman", "Diana Prince", 95, true)
+    createHeroProfile("The Flash", null, 85, true)
+
 }

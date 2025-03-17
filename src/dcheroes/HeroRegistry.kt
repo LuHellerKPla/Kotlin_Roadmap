@@ -20,6 +20,14 @@ fun createHeroProfile(
     )
 }
 
+fun analyzeHero(hero: Any) {
+    when(hero) {
+        is String -> println("Hero name: $hero")
+        is Int -> println("Hero power level: $hero")
+        else -> println("Unknown hero data")
+    }
+}
+
 fun main() {
     // Create various hero profiles
     createHeroProfile("Batman", "Bruce Wayne", 90, false)
@@ -27,4 +35,7 @@ fun main() {
     createHeroProfile("Wonder Woman", "Diana Prince", 95, true)
     createHeroProfile("The Flash", null, 85, true)
 
+    analyzeHero("Batman")
+    analyzeHero(95)
+    analyzeHero(true)
 }

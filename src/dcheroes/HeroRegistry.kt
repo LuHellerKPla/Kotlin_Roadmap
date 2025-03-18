@@ -1,68 +1,68 @@
 package dcheroes
 
-//Simple Function Declaration
-fun assembleJusticeLeague() {
-    println("Justice League assembled!")
+// Simple class definition
+class Superhero {
+    var name: String = ""
+    var power: String = ""
+    var powerLevel: Int = 0
+
+    fun useAbility(){
+        println("$name uses $power!")
+    }
 }
 
-fun getHeroName(): String {
-    return "Batman"
-}
-
-//Functions with Parameters
-fun announceHero(name: String, city: String) {
-    println("$name is protecting $city")
-}
-
-//Functions with Default Values
-fun heroAlert(
-    hero: String,
-    threat: String = "crime",
-    urgency: Int = 1,
-    location: String = "Gotham"
+// Primary constructor
+class JusticeLeagueMember(
+    val name: String,
+    var isActive: Boolean = true,
+    private val secretIdentity: String
 ) {
-    println("Alert: $hero is fighting $threat in $location! Urgency level: $urgency")
+    var missionCount: Int = 0
+
+    init {
+        println("New Justice League member registered: $name")
+    }
+
+    init {
+        if(secretIdentity.isNotEmpty()) {
+            println("Secret identity secured in database")
+        }
+    }
 }
 
-// Using Named Parameters
-fun deployHero(
-    heroName: String,
-    location: String,
-    teamSupport: Boolean = false,
-    equipmentNeeded: Boolean = true
-) {
-    println("------")
-    println("Deploying $heroName to $location")
-    if(teamSupport) println("Backup team requested")
-    if(equipmentNeeded) println("Equipment preparation required")
+// Custom Accessors
+class Batmobile {
+    var fuelLevel = 100
+    private set
+
+    var isRunning = false
+        get() = field && fuelLevel > 0
+        set(value) {
+            println("Batmobile status changing to: $value")
+            field = value
+        }
+
+    fun drive (distance: Int) {
+        if (isRunning && fuelLevel >= distance) {
+            fuelLevel -= distance
+            println("Batmobile drove $distance units. Fuel remaining: $fuelLevel")
+        } else {
+            println("Cannot drive: ${ if (!isRunning) "Engine off" else "Not enough fuel"}")
+        }
+    }
 }
 
-// Single-Expression Functions
-// Compact functions declaration
-fun isSuperman(hero: String): Boolean = hero.equals("Superman", ignoreCase = true)
-fun calculateThreatLevel(villainPower: Int, minions: Int) = villainPower * minions
-
-// Functions that don't return values
-fun activateBatSignal(): Unit {
-    println("Bat-Signal activated!")
-}
-// Unit return type can be omitted
-fun deactivateBatSignal(){
-    println("Bat-Signal deactivated")
-}
+// Multiple Ways to Create Objects
+class Villain(val name: String, var threatLevel)
 
 fun main() {
-    announceHero("Batman", "Gotham")
-    announceHero("Superman", "Metropolis")
+    val batman = Superhero()
+    batman.name = "Batman"
+    batman.power = "Detective Skills"
+    batman.powerLevel = 90
+    batman.useAbility()
 
-    heroAlert("Batman")
-    heroAlert("Superman", "Brainiac")
-    heroAlert("Wonder Woman", "Cheetah", 5, "Themyscira")
+    val superman = JusticeLeagueMember("Superman", true, "Clark Kent")
 
-    deployHero(
-        heroName = "Batman",
-        location = "Crime Alley",
-        equipmentNeeded = true,
-        teamSupport = false
-    )
+    println(Batmobile().drive(5))
 }

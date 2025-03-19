@@ -1,15 +1,17 @@
-val name = "Nate"
-var greeting: String? = null
+fun getGreeting(): String {
+    return "Hello Kotlin"
+}
+
+//Single Expression Function
+fun getGreetingSEF() = "Hello Single Expression Function"
+
+fun sayHello() {
+    println(getGreeting())
+}
 
 fun main() {
-    greeting = "Hello"
-    val greetingToPrintIf = if(greeting != null) greeting else "Hi"
-    val greetingToPrintWhen = when (greeting) {
-        null -> "Hi"
-        else -> greeting
-    }
-
-    println(greetingToPrintIf)
-    println(greetingToPrintWhen)
-    println(name)
+    println("Hello World")
+    println(getGreeting())
+    sayHello()
+    println(getGreetingSEF())
 }

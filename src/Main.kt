@@ -1,7 +1,13 @@
-fun main() {
-    var name: String = "Luiza"
-    name = "Lua"
+val name = "Nate"
+var greeting: String? = null
 
-    println(name
-    )
+fun main() {
+    if (greeting != null) {
+        println(greeting)
+    } else {
+
+        println("hi")
+    }
+
+    println(name)
 }

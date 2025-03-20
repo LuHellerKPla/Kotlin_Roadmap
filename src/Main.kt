@@ -1,11 +1,21 @@
-fun sayHello(greeting: String, itemsToGreet: List<String>) {
-    itemsToGreet.forEach{ itemToGreet ->
+fun sayHello(greeting: String, vararg itemsToGreet: String) {
+    itemsToGreet.forEach { itemToGreet ->
         println("$greeting $itemToGreet")
     }
 }
 
 fun main() {
-    // Multiple Things
     val interestingThings = listOf("Kotlin", "Programming", "Comic Books")
-    sayHello("Hi", interestingThings)
+    sayHello("Hi")
+
+    // vararg
+    sayHello("Hey", "Kotlin", "Programming", "Comic Books")
+
+    println("-----")
+    // Spread Operator
+    val animals = arrayOf("Dogs", "Cats", "Ducks")
+    sayHello("Hi", *animals)
+
+    // Named arguments
+
 }

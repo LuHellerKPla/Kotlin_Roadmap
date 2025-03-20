@@ -1,29 +1,29 @@
-//Function Parameters
-fun sayHello(itemToGreet: String) {
-    val msg = "Hello " + itemToGreet
-    println(msg)
-}
-
-// String Templates
-fun sayHelloWithStringTemplate(itemToGreet: String) {
-    val msg = "Hello $itemToGreet"
-    println(msg)
-    println("Hello $itemToGreet")
-}
-
-// Single expression function
-fun sayHelloInSEF(itemToGreet: String) = println("Hello $itemToGreet")
-
-// Take in two parameters
 fun sayHelloTwoParams(greeting: String, itemToGreet: String) = println("$greeting $itemToGreet")
 
 fun main() {
-    sayHello("Kotlin")
-    sayHello("Lion")
+    val interestingThings = arrayOf("Kolin", "Programming", "Comic Books")
+    println(interestingThings.size)
+    println(interestingThings[0])
+    println(interestingThings.get(0))
+    println("-----")
 
-    sayHelloWithStringTemplate("String template")
+    // Iterating Over Collections
+    for (interestingThing in interestingThings) {
+        println(interestingThing)
+    }
+    println("-----")
+    interestingThings.forEach {
+        println(it)
+    }
+    println("-----")
+    // Using another name for it
+    interestingThings.forEach { interestingThing->
+        println(interestingThing)
+    }
 
-    sayHelloInSEF("whale")
-
-    sayHelloTwoParams("Hey", "Steve")
+    println("-----")
+    // Pass the current index as well as the current string
+    interestingThings.forEachIndexed{index, interestingThing ->
+        println("$interestingThing is at index $index")
+    }
 }
